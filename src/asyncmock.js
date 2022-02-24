@@ -1,3 +1,5 @@
+import { products } from "./components/Products";
+
 const items = [
     { 
         id: 1, 
@@ -29,8 +31,11 @@ const items = [
 ];
 
 
-export const getItem = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(items[0]);
-    }, 2000);
-});
+export const getItem = (id) => {
+    return new Promise((resolve) => {
+        const prod = items.find (p => p.id === parseInt(id))
+        setTimeout(() => {
+           resolve(products[0]) 
+        }, 2000);
+    })
+}
