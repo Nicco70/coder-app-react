@@ -9,11 +9,13 @@
     border: 1px solid black;
     border-radius: 10%;
     border-width: 0.5rem;
-    padding: 1rem;
+    padding: 2rem;
 
 }
 
 .itemDeList img {
-    width: 10rem;
-    height: 10rem;
+    width: 14rem;
+    height: 15rem;
+    object-fit: cover;
+    
 }

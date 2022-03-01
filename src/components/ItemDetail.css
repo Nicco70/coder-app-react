@@ -1,0 +1,15 @@
+.itemDetailContenedor {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+.imagenDeDetail {
+    width: 20rem;
+    height: 25rem;
+    object-fit: cover;
+}
+
+h3 {
+    font-size: 2rem;
+}

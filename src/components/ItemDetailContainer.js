@@ -1,26 +1,33 @@
 import { useEffect, useState } from 'react';
-import { getItem } from '../asyncmock'
-import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom';
-import Item from './Item';
+import { traerProducto } from '../asyncmock';
+import ItemDetail from './ItemDetail';
 
-    const ItemDetailContainer = () => {
-        const [items, setProducts] = useState([]);
-        const {productId} = useParams()
-    
-        useEffect(() => {
-            getItem(productId).then((resolve) => {
-                    setProducts(resolve);
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }, [productId]);
-    
-        return (    
-                <>
-                    {Item ? <ItemDetail items={items}/> : <h2> loading </h2>}
-                </>
-            )}
+const ItemDetailContainer = () => {
+    const [product, setProduct] = useState({});
+    const [loading, setLoading] = useState(true);
+    const { itemId } = useParams();
 
-export default ItemDetailContainer
+    useEffect(() => {
+        traerProducto(itemId)
+            .then((res) => {
+                setProduct(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+        return () => {
+            setProduct([]);
+            setLoading(true);
+        };
+    }, [itemId]);
+
+    return (
+        <>{loading ? <h1>Cargando...</h1> : <ItemDetail product={product} />}</>
+    );
+};
+
+export default ItemDetailContainer;
