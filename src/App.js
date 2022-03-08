@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Cart from './components/Cart';
-import { CartContextProvider } from './components/CartContext';
+import Cart from './context/Cart';
+import { CartContextProvider } from './context/CartContext';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer';
 import Navbar from './components/NavBar';
