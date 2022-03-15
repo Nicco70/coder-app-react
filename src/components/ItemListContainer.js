@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { traerProductos } from '../asyncmock';
+/* import { traerProductos } from '../asyncmock'; */
 import ItemList from './ItemList';
+import { getDocs, collection, query, where } from 'firebase/firestore'
+import { firestoredb } from '../services/firebase/firebase';
 
 const ItemListContainer = ({ saludo }) => {
     const [products, setProducts] = useState([]);
@@ -9,21 +11,25 @@ const ItemListContainer = ({ saludo }) => {
     const { categoryId } = useParams();
 
     useEffect(() => {
-        traerProductos(categoryId)
-            .then((res) => {
-                setProducts(res);
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        setLoading(true)
 
-        return () => {
+        const collectionRef = categoryId ? 
+            query(collection(firestoredb, 'products'), where('category', '==', categoryId)) : 
+            collection(firestoredb, 'products')
+       
+
+        getDocs(collectionRef).then(response => {
+            const products = response.docs.map(doc => {
+                return { id: doc.id, ...doc.data() }
+            })
+            setProducts(products)
+        }).finally(() => {
+            setLoading(false)
+        })
+
+        return (() => {
             setProducts([]);
-            setLoading(true);
-        };
+        });
     }, [categoryId]);
 
     return (
