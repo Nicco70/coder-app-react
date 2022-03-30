@@ -68,3 +68,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Instrucciones para inicializar el proyecto
+
+- Configurar variables de entorno: Al utilizar create-react-app para el proyecto, las variables de entorno deben comenzar con REACT_APP. Ejemplo: REACT_APP_MI_VARIABLE_DE_ENTORNO. Estas se encuentran en el archivo .env, ubicado en la raiz del proyeto.
+- Formatos para crear o modificar productos de la App en la base de datos "Firebase": 
+2 Colecciones: 
+categorys; documento con su nombre de cartegoria y campo con su descripcion. 
+products; documento con el id del produto y el campo con el nombre de categoria, descripcion, img, name, price, stock.
+- Rutas de la aplicacion: 
+Se renderiza el NavBar en todas la rutas.
+"/": Inicio del comercio; Renderiza el ItemListContainer con todos los productos. Muestra minimo detalle con los parametros asignados(name, img).
+"/category/:categoryId": Filtra por categorias de los productos. Renderiza ItemListContainer.
+"/detail/:itemId": Muestra el detalle del producto selecccionado con sus parametros asignados (name, price, stock, etc). Renderiza ItemDetailContainer.
+"/cart": Muestra los productos ingresados en el carrito junto con los botones y sus funiones("borrar producto", "limpiar carrito", "finalizar compra") y con el formulario de contacto con el boton para que se muestre. Renderiza el Cart.
+- [Gif de como funciona la App](./gif-proyecto.gif)
+
+
+

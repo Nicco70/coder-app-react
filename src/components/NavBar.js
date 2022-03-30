@@ -23,22 +23,6 @@ const NavBar = () => {
         })
     }, []) 
 
-    /* return (
-        <nav className= 'NavBar'>
-            <img src={'https://freepngimg.com/thumb/logo/71766-logo-vector-design-illustration-phoenix-hd-image-free-png.png'} alt='logo'></img>
-            <h2>ELECTOFAN</h2>
-            <>
-                <NavLink to={'category/celulares'} className= 'Option'>Celulares</NavLink>
-                <NavLink to= {'category/tablets'} className= 'Option'>Tablet</NavLink>
-                <NavLink to= {'category/notebooks'} className= 'Option'>Notebooks</NavLink>
-                <CartWidget label='CARRITO' backgroundColor='brown' colorText='black' handleClick>
-                </CartWidget>
-                {cart.length > 0 && <CartWidget />}
-            </>
-        </nav>
-    )
-} */
-
 return (
         <nav className="NavBar" >
         <Link to={'/'}>

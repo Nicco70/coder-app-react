@@ -17,7 +17,6 @@ const ItemListContainer = ({ saludo }) => {
             query(collection(firestoredb, 'products'), where('category', '==', categoryId)) : 
             collection(firestoredb, 'products')
        
-
         getDocs(collectionRef).then(response => {
             const products = response.docs.map(doc => {
                 return { id: doc.id, ...doc.data() }

@@ -4,7 +4,7 @@ const Counter = ({ stock, onAdd }) => {
     const [number, setNumber] = useState(0);
 
     const add = () => {
-        number < stock && setNumber(number + 1);
+        number <= stock && setNumber(number + 1);
     };
 
     const substract = () => {
